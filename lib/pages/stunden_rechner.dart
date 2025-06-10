@@ -125,96 +125,99 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 ],
               ),
               const SizedBox(height: 20),
+              // Replace the two ListTiles for start and end time with this one:
               ListTile(
                 leading: Icon(Icons.access_time),
-                title: Text('Beginn: ${_formatTime(_startTime)}'),
-                onTap: () async {
-                  final picked = await showTimePicker(
-                    context: context,
-                    initialTime: _startTime ?? TimeOfDay.now(),
-                    builder: (context, child) {
-                      return MediaQuery(
-                        data: MediaQuery.of(
-                          context,
-                        ).copyWith(alwaysUse24HourFormat: _use24HourFormat),
-                        child: child!,
-                      );
-                    },
-                  );
-                  if (picked != null) {
-                    setState(() {
-                      _startTime = picked;
-                    });
-                  }
-                },
+                title: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () async {
+                        final picked = await showTimePicker(
+                          context: context,
+                          initialTime: _startTime ?? TimeOfDay(hour: TimeOfDay.now().hour, minute: 0),
+                          builder: (context, child) {
+                            return MediaQuery(
+                              data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                              child: child!,
+                            );
+                          },
+                        );
+                        if (picked != null) {
+                          setState(() {
+                            _startTime = picked;
+                          });
+                        }
+                      },
+                      child: Row(
+                        children: [
+                          Text('Beginn: ${_formatTime(_startTime)}'),
+                          const SizedBox(width: 16),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        final picked = await showTimePicker(
+                          context: context,
+                          initialTime: _endTime ?? TimeOfDay.now(),
+                          builder: (context, child) {
+                            return MediaQuery(
+                              data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                              child: child!,
+                            );
+                          },
+                        );
+                        if (picked != null) {
+                          setState(() {
+                            _endTime = picked;
+                          });
+                        }
+                      },
+                      child: Text('Ende: ${_formatTime(_endTime)}'),
+                    ),
+                  ],
+                ),
               ),
-              ListTile(
-                leading: Icon(Icons.access_time),
-                title: Text('Ende: ${_formatTime(_endTime)}'),
-                onTap: () async {
-                  final picked = await showTimePicker(
-                    context: context,
-                    initialTime: _endTime ?? TimeOfDay.now(),
-                    builder: (context, child) {
-                      return MediaQuery(
-                        data: MediaQuery.of(
-                          context,
-                        ).copyWith(alwaysUse24HourFormat: _use24HourFormat),
-                        child: child!,
-                      );
-                    },
-                  );
-                  if (picked != null) {
-                    setState(() {
-                      _endTime = picked;
-                    });
-                  }
-                },
-              ),
-              // NEW: Break start
+              // NEW: Break start and end in one ListTile
               ListTile(
                 leading: Icon(Icons.free_breakfast),
-                title: Text('Pause von: ${_formatTime(_breakStartTime)}'),
+                title: Row(
+                  children: [
+                    Text('Pause von: ${_formatTime(_breakStartTime)}'),
+                    const SizedBox(width: 16),
+                    Text('Pause bis: ${_formatTime(_breakEndTime)}'),
+                  ],
+                ),
                 onTap: () async {
-                  final picked = await showTimePicker(
+                  // Show dialog to pick both break start and end times
+                  final breakStart = await showTimePicker(
                     context: context,
                     initialTime: _breakStartTime ?? TimeOfDay.now(),
                     builder: (context, child) {
                       return MediaQuery(
-                        data: MediaQuery.of(
-                          context,
-                        ).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
                         child: child!,
                       );
                     },
                   );
-                  if (picked != null) {
+                  if (breakStart != null) {
                     setState(() {
-                      _breakStartTime = picked;
+                      _breakStartTime = breakStart;
                     });
                   }
-                },
-              ),
-              // NEW: Break end
-              ListTile(
-                leading: Icon(Icons.free_breakfast),
-                title: Text('Pause bis: ${_formatTime(_breakEndTime)}'),
-                onTap: () async {
-                  final picked = await showTimePicker(
+                  final breakEnd = await showTimePicker(
                     context: context,
                     initialTime: _breakEndTime ?? TimeOfDay.now(),
                     builder: (context, child) {
                       return MediaQuery(
-                        data: MediaQuery.of(
-                          context,
-                        ).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
                         child: child!,
                       );
                     },
                   );
-                  if (picked != null) {
+                  if (breakEnd != null) {
                     setState(() {
-                      _breakEndTime = picked;
+                      _breakEndTime = breakEnd;
                     });
                   }
                 },
