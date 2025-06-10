@@ -14,7 +14,7 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(121, 154, 189, 204),
+        backgroundColor: const Color.fromARGB(121, 65, 119, 200),
         title: Center(
           child: Text(
             'Arbeitszeiten',
