@@ -129,8 +129,13 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                         });
                       }
                     },
-                    child: const Text('Datum wählen', style: TextStyle(color: Color.fromARGB(199, 65, 119, 200)),
-                  ),)
+                    child: const Text(
+                      'Datum wählen',
+                      style: TextStyle(
+                        color: Color.fromARGB(199, 65, 119, 200),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 50),
@@ -246,14 +251,14 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   Switch(
                     activeColor: Colors.white,
                     activeTrackColor: const Color.fromARGB(121, 65, 119, 200),
-,
+
                     value: _use24HourFormat,
                     onChanged: (val) {
                       setState(() {
                         _use24HourFormat = val;
                       });
                     },
-                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 50),
@@ -287,7 +292,10 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   );
                   print('Stunden Differenz: $differenz');
                 },
-                child: const Text('Eintragen', style: TextStyle(color: Color.fromARGB(199, 65, 119, 200)),
+                child: const Text(
+                  'Eintragen',
+                  style: TextStyle(color: Color.fromARGB(199, 65, 119, 200)),
+                ),
               ),
             ],
           ),
