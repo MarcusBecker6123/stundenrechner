@@ -264,10 +264,24 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
               const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () async {
-                  if (_startTime == null ||
-                      _endTime == null ||
-                      _selectedDate == null)
+                  if (_selectedDate == null) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text('Hinweis'),
+                        content: Text('Bitte wähle ein Datum aus.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
                     return;
+                  }
+                  if (_startTime == null || _endTime == null) return;
+
                   final start = _timeOfDayToDouble(_startTime!);
                   final end = _timeOfDayToDouble(_endTime!);
 
@@ -280,6 +294,25 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   }
 
                   final differenz = (end - start) - breakDuration;
+
+                  // NEW: Error handling for invalid differenz
+                  if (differenz <= 0) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text('Fehler'),
+                        content: Text('Keine gültige Eingabe.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
+                    return;
+                  }
+
                   final dateString =
                       '${_selectedDate!.day.toString().padLeft(2, '0')}.${_selectedDate!.month.toString().padLeft(2, '0')}.${_selectedDate!.year}';
 
@@ -287,8 +320,8 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     dateString,
                     start,
                     end,
-                    breakDuration, // <-- break time
-                    differenz, // <-- working time
+                    breakDuration,
+                    differenz,
                   );
                   print('Stunden Differenz: $differenz');
                 },
