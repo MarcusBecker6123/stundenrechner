@@ -129,7 +129,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                         });
                       }
                     },
-                    child: const Text('Datum wählen'),
+                    child: const Text('Datum wählen', style: TextStyle(color: Color.fromARGB(199, 65, 119, 200)),
                   ),
                 ],
               ),
@@ -244,8 +244,9 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 children: [
                   const Text('24-Stunden-Format'),
                   Switch(
-                    activeColor: const Color.fromARGB(199, 65, 119, 200),
-                    activeTrackColor: Colors.grey,
+                    activeColor: Colors.white,
+                    activeTrackColor: const Color.fromARGB(121, 65, 119, 200),
+,
                     value: _use24HourFormat,
                     onChanged: (val) {
                       setState(() {
