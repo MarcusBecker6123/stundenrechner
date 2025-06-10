@@ -32,14 +32,23 @@ class _StundenRechnerState extends State<StundenRechner> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),
             label: 'Rechner',
+            backgroundColor: Color.fromARGB(121, 65, 119, 200),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'Arbeitszeiten',
+            backgroundColor: Color.fromARGB(121, 65, 119, 200),
           ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+        selectedItemColor: Color.fromARGB(
+          121,
+          65,
+          119,
+          200,
+        ), // <-- selected icon color
+        unselectedItemColor: Colors.grey, // <-- unselected icon color
       ),
     );
   }
@@ -76,7 +85,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(121, 154, 189, 204),
+        backgroundColor: const Color.fromARGB(121, 65, 119, 200),
         title: Center(
           child: Text(
             'Stunden Rechner',
@@ -90,7 +99,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
       ),
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -102,7 +111,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                         ? 'Kein Datum gewählt'
                         : 'Datum: ${_selectedDate!.day}.${_selectedDate!.month}.${_selectedDate!.year}',
                   ),
-                  const SizedBox(width: 16),
+                  const SizedBox(width: 24),
                   ElevatedButton(
                     onPressed: () async {
                       final locale = Localizations.localeOf(context);
@@ -124,14 +133,14 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               // Replace the two ListTiles for start and end time with this one:
               ListTile(
                 leading: Icon(Icons.access_time),
                 title: Row(
                   children: [
                     Text('Beginn: ${_formatTime(_startTime)}'),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 24),
                     Text('Ende: ${_formatTime(_endTime)}'),
                   ],
                 ),
@@ -139,10 +148,14 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   // Pick start time
                   final pickedStart = await showTimePicker(
                     context: context,
-                    initialTime: _startTime ?? TimeOfDay(hour: TimeOfDay.now().hour, minute: 0),
+                    initialTime:
+                        _startTime ??
+                        TimeOfDay(hour: TimeOfDay.now().hour, minute: 0),
                     builder: (context, child) {
                       return MediaQuery(
-                        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                        data: MediaQuery.of(
+                          context,
+                        ).copyWith(alwaysUse24HourFormat: _use24HourFormat),
                         child: child!,
                       );
                     },
@@ -156,10 +169,14 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   // Pick end time
                   final pickedEnd = await showTimePicker(
                     context: context,
-                    initialTime: _endTime ?? TimeOfDay(hour: TimeOfDay.now().hour, minute: 0),
+                    initialTime:
+                        _endTime ??
+                        TimeOfDay(hour: TimeOfDay.now().hour, minute: 0),
                     builder: (context, child) {
                       return MediaQuery(
-                        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                        data: MediaQuery.of(
+                          context,
+                        ).copyWith(alwaysUse24HourFormat: _use24HourFormat),
                         child: child!,
                       );
                     },
@@ -177,7 +194,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 title: Row(
                   children: [
                     Text('Beginn: ${_formatTime(_breakStartTime)}'),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 24),
                     Text('Ende: ${_formatTime(_breakEndTime)}'),
                   ],
                 ),
@@ -221,7 +238,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   }
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 35),
               // NEW: 24-hour format switch
               Row(
                 children: [
@@ -236,6 +253,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   ),
                 ],
               ),
+              const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () async {
                   if (_startTime == null ||

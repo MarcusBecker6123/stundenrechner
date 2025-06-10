@@ -129,8 +129,27 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                           IconButton(
                             icon: Icon(Icons.delete, color: Colors.red),
                             onPressed: () async {
-                              await DatabaseHelper.instance.deleteWorkTime(entry['id']);
-                              setState(() {});
+                              final confirm = await showDialog<bool>(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  title: Text('Löschen bestätigen'),
+                                  content: Text('Möchtest du diese Zeile wirklich löschen?'),
+                                  actions: [
+                                    TextButton(
+                                      child: Text('Abbrechen'),
+                                      onPressed: () => Navigator.of(context).pop(false),
+                                    ),
+                                    TextButton(
+                                      child: Text('Löschen'),
+                                      onPressed: () => Navigator.of(context).pop(true),
+                                    ),
+                                  ],
+                                ),
+                              );
+                              if (confirm == true) {
+                                await DatabaseHelper.instance.deleteWorkTime(entry['id']);
+                                setState(() {});
+                              }
                             },
                           ),
                         ],
