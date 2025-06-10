@@ -64,4 +64,13 @@ class DatabaseHelper {
       whereArgs: [entry['id']],
     );
   }
+
+  Future<void> deleteWorkTime(int id) async {
+    final db = await database;
+    await db.delete(
+      'work_times',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }

@@ -108,18 +108,33 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                           ),
                         ],
                       ),
-                      onTap: () async {
-                        final updatedEntry = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                ArbeitszeitDetailPage(entry: entry),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit, color: Colors.blue),
+                            onPressed: () async {
+                              final updatedEntry = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ArbeitszeitDetailPage(entry: entry),
+                                ),
+                              );
+                              if (updatedEntry != null) {
+                                setState(() {});
+                              }
+                            },
                           ),
-                        );
-                        if (updatedEntry != null) {
-                          setState(() {});
-                        }
-                      },
+                          IconButton(
+                            icon: Icon(Icons.delete, color: Colors.red),
+                            onPressed: () async {
+                              await DatabaseHelper.instance.deleteWorkTime(entry['id']);
+                              setState(() {});
+                            },
+                          ),
+                        ],
+                      ),
                     );
                   },
                 ),

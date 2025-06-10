@@ -130,72 +130,68 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 leading: Icon(Icons.access_time),
                 title: Row(
                   children: [
-                    GestureDetector(
-                      onTap: () async {
-                        final picked = await showTimePicker(
-                          context: context,
-                          initialTime: _startTime ?? TimeOfDay(hour: TimeOfDay.now().hour, minute: 0),
-                          builder: (context, child) {
-                            return MediaQuery(
-                              data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
-                              child: child!,
-                            );
-                          },
-                        );
-                        if (picked != null) {
-                          setState(() {
-                            _startTime = picked;
-                          });
-                        }
-                      },
-                      child: Row(
-                        children: [
-                          Text('Beginn: ${_formatTime(_startTime)}'),
-                          const SizedBox(width: 16),
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () async {
-                        final picked = await showTimePicker(
-                          context: context,
-                          initialTime: _endTime ?? TimeOfDay.now(),
-                          builder: (context, child) {
-                            return MediaQuery(
-                              data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
-                              child: child!,
-                            );
-                          },
-                        );
-                        if (picked != null) {
-                          setState(() {
-                            _endTime = picked;
-                          });
-                        }
-                      },
-                      child: Text('Ende: ${_formatTime(_endTime)}'),
-                    ),
+                    Text('Beginn: ${_formatTime(_startTime)}'),
+                    const SizedBox(width: 16),
+                    Text('Ende: ${_formatTime(_endTime)}'),
                   ],
                 ),
+                onTap: () async {
+                  // Pick start time
+                  final pickedStart = await showTimePicker(
+                    context: context,
+                    initialTime: _startTime ?? TimeOfDay(hour: TimeOfDay.now().hour, minute: 0),
+                    builder: (context, child) {
+                      return MediaQuery(
+                        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                        child: child!,
+                      );
+                    },
+                  );
+                  if (pickedStart != null) {
+                    setState(() {
+                      _startTime = pickedStart;
+                    });
+                  }
+
+                  // Pick end time
+                  final pickedEnd = await showTimePicker(
+                    context: context,
+                    initialTime: _endTime ?? TimeOfDay(hour: TimeOfDay.now().hour, minute: 0),
+                    builder: (context, child) {
+                      return MediaQuery(
+                        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                        child: child!,
+                      );
+                    },
+                  );
+                  if (pickedEnd != null) {
+                    setState(() {
+                      _endTime = pickedEnd;
+                    });
+                  }
+                },
               ),
               // NEW: Break start and end in one ListTile
               ListTile(
                 leading: Icon(Icons.free_breakfast),
                 title: Row(
                   children: [
-                    Text('Pause von: ${_formatTime(_breakStartTime)}'),
+                    Text('Beginn: ${_formatTime(_breakStartTime)}'),
                     const SizedBox(width: 16),
-                    Text('Pause bis: ${_formatTime(_breakEndTime)}'),
+                    Text('Ende: ${_formatTime(_breakEndTime)}'),
                   ],
                 ),
                 onTap: () async {
                   // Show dialog to pick both break start and end times
                   final breakStart = await showTimePicker(
                     context: context,
-                    initialTime: _breakStartTime ?? TimeOfDay.now(),
+                    initialTime:
+                        _breakStartTime ?? TimeOfDay(hour: 12, minute: 0),
                     builder: (context, child) {
                       return MediaQuery(
-                        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                        data: MediaQuery.of(
+                          context,
+                        ).copyWith(alwaysUse24HourFormat: _use24HourFormat),
                         child: child!,
                       );
                     },
@@ -207,10 +203,13 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   }
                   final breakEnd = await showTimePicker(
                     context: context,
-                    initialTime: _breakEndTime ?? TimeOfDay.now(),
+                    initialTime:
+                        _breakEndTime ?? TimeOfDay(hour: 12, minute: 45),
                     builder: (context, child) {
                       return MediaQuery(
-                        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: _use24HourFormat),
+                        data: MediaQuery.of(
+                          context,
+                        ).copyWith(alwaysUse24HourFormat: _use24HourFormat),
                         child: child!,
                       );
                     },
@@ -263,7 +262,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     start,
                     end,
                     breakDuration, // <-- break time
-                    differenz,     // <-- working time
+                    differenz, // <-- working time
                   );
                   print('Stunden Differenz: $differenz');
                 },
