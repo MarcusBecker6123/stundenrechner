@@ -130,7 +130,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                       }
                     },
                     child: const Text('Datum wählen', style: TextStyle(color: Color.fromARGB(199, 65, 119, 200)),
-                  ),
+                  ),)
                 ],
               ),
               const SizedBox(height: 50),
@@ -287,7 +287,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   );
                   print('Stunden Differenz: $differenz');
                 },
-                child: const Text('Eintragen'),
+                child: const Text('Eintragen', style: TextStyle(color: Color.fromARGB(199, 65, 119, 200)),
               ),
             ],
           ),
