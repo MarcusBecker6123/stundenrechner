@@ -32,18 +32,18 @@ class _StundenRechnerState extends State<StundenRechner> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),
             label: 'Rechner',
-            backgroundColor: Color.fromARGB(121, 65, 119, 200),
+            backgroundColor: Color.fromARGB(199, 65, 119, 200),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'Arbeitszeiten',
-            backgroundColor: Color.fromARGB(121, 65, 119, 200),
+            backgroundColor: Color.fromARGB(199, 65, 119, 200),
           ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         selectedItemColor: Color.fromARGB(
-          121,
+          199,
           65,
           119,
           200,
@@ -85,7 +85,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(121, 65, 119, 200),
+        backgroundColor: const Color.fromARGB(199, 65, 119, 200),
         title: Center(
           child: Text(
             'Stunden Rechner',
@@ -244,13 +244,15 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 children: [
                   const Text('24-Stunden-Format'),
                   Switch(
+                    activeColor: const Color.fromARGB(199, 65, 119, 200),
+                    activeTrackColor: Colors.grey,
                     value: _use24HourFormat,
                     onChanged: (val) {
                       setState(() {
                         _use24HourFormat = val;
                       });
                     },
-                  ),
+                    ),
                 ],
               ),
               const SizedBox(height: 50),
