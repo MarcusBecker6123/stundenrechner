@@ -301,7 +301,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                       context: context,
                       builder: (context) => AlertDialog(
                         title: Text('Fehler'),
-                        content: Text('Keine gültige Eingabe.'),
+                        content: Text('Beginn muss vor Ende liegen und Pausenzeit darf nicht negativ sein.'),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),
