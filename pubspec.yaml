@@ -39,6 +39,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  fl_chart: ^1.0.0
 
 dev_dependencies:
   flutter_test:
