@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import 'package:stundenrechner/pages/arbeitszeiten_page.dart';
 import 'database_helper.dart';
 
@@ -245,22 +247,20 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
               ),
               const SizedBox(height: 35),
               // NEW: 24-hour format switch
-              Row(
-                children: [
-                  const Text('24-Stunden-Format'),
-                  Switch(
-                    activeColor: Colors.white,
-                    activeTrackColor: const Color.fromARGB(121, 65, 119, 200),
-
-                    value: _use24HourFormat,
-                    onChanged: (val) {
-                      setState(() {
-                        _use24HourFormat = val;
-                      });
-                    },
-                  ),
-                ],
-              ),
+              if (Platform.isAndroid)
+                Row(
+                  children: [
+                    Text(AppLocalizations.of(context)!.format24Hour),
+                    Switch(
+                      value: _use24HourFormat,
+                      onChanged: (val) {
+                        setState(() {
+                          _use24HourFormat = val;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () async {
@@ -301,7 +301,9 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                       context: context,
                       builder: (context) => AlertDialog(
                         title: Text('Fehler'),
-                        content: Text('Beginn muss vor Ende liegen und Pausenzeit darf nicht negativ sein.'),
+                        content: Text(
+                          'Beginn muss vor Ende liegen und Pausenzeit darf nicht negativ sein.',
+                        ),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),
