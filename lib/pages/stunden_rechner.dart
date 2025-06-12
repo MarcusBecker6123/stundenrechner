@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:stundenrechner/l10n/app_localizations_de.dart';
 import '../l10n/app_localizations.dart';
 import 'package:stundenrechner/pages/arbeitszeiten_page.dart';
 import 'database_helper.dart';
@@ -30,15 +31,16 @@ class _StundenRechnerState extends State<StundenRechner> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),
-            label: 'Rechner',
+            label: AppLocalizations.of(context)!.navbar1,
             backgroundColor: Color.fromARGB(199, 65, 119, 200),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'Arbeitszeiten',
+            label: AppLocalizations.of(context)!.navbar2,
+            // <-- This label will be localized
             backgroundColor: Color.fromARGB(199, 65, 119, 200),
           ),
         ],
@@ -90,7 +92,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
         backgroundColor: const Color.fromARGB(199, 65, 119, 200),
         title: Center(
           child: Text(
-            'Stunden Rechner',
+            AppLocalizations.of(context)!.calculator,
             style: TextStyle(
               color: Colors.white,
               fontSize: 32,
@@ -110,8 +112,8 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 children: [
                   Text(
                     _selectedDate == null
-                        ? 'Kein Datum gewählt'
-                        : 'Datum: ${_selectedDate!.day}.${_selectedDate!.month}.${_selectedDate!.year}',
+                        ? '${AppLocalizations.of(context)!.noDate}'
+                        : '${AppLocalizations.of(context)!.date}: ${_selectedDate!.day}.${_selectedDate!.month}.${_selectedDate!.year}',
                   ),
                   const SizedBox(width: 24),
                   ElevatedButton(
@@ -131,8 +133,8 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                         });
                       }
                     },
-                    child: const Text(
-                      'Datum wählen',
+                    child: Text(
+                      AppLocalizations.of(context)!.chooseDate,
                       style: TextStyle(
                         color: Color.fromARGB(199, 65, 119, 200),
                       ),
@@ -146,9 +148,13 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 leading: Icon(Icons.access_time),
                 title: Row(
                   children: [
-                    Text('Beginn: ${_formatTime(_startTime)}'),
+                    Text(
+                      '${AppLocalizations.of(context)!.begin}: ${_formatTime(_startTime)}',
+                    ),
                     const SizedBox(width: 24),
-                    Text('Ende: ${_formatTime(_endTime)}'),
+                    Text(
+                      '${AppLocalizations.of(context)!.end}: ${_formatTime(_endTime)}',
+                    ),
                   ],
                 ),
                 onTap: () async {
@@ -200,9 +206,13 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 leading: Icon(Icons.free_breakfast),
                 title: Row(
                   children: [
-                    Text('Beginn: ${_formatTime(_breakStartTime)}'),
+                    Text(
+                      '${AppLocalizations.of(context)!.begin}: ${_formatTime(_breakStartTime)}',
+                    ),
                     const SizedBox(width: 24),
-                    Text('Ende: ${_formatTime(_breakEndTime)}'),
+                    Text(
+                      '${AppLocalizations.of(context)!.end}: ${_formatTime(_breakEndTime)}',
+                    ),
                   ],
                 ),
                 onTap: () async {
@@ -268,8 +278,8 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: Text('Hinweis'),
-                        content: Text('Bitte wähle ein Datum aus.'),
+                        title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(AppLocalizations.of(context)!.chooseDate),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),
@@ -300,10 +310,8 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: Text('Fehler'),
-                        content: Text(
-                          'Beginn muss vor Ende liegen und Pausenzeit darf nicht negativ sein.',
-                        ),
+                        title: Text(AppLocalizations.of(context)!.error),
+                        content: Text(AppLocalizations.of(context)!.eHandler),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),
@@ -325,10 +333,12 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     breakDuration,
                     differenz,
                   );
-                  print('Stunden Differenz: $differenz');
+                  print(
+                    '${AppLocalizations.of(context)!.hourdiff}: $differenz',
+                  );
                 },
-                child: const Text(
-                  'Eintragen',
+                child: Text(
+                  AppLocalizations.of(context)!.insert,
                   style: TextStyle(color: Color.fromARGB(199, 65, 119, 200)),
                 ),
               ),
@@ -338,14 +348,4 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
       ),
     );
   }
-}
-
-final labels = {
-  'en': {'calculator': 'Calculator', 'working_times': 'Working Times'},
-  'de': {'calculator': 'Rechner', 'working_times': 'Arbeitszeiten'},
-};
-
-String? getLabel(BuildContext context, String key) {
-  final locale = Localizations.localeOf(context).languageCode;
-  return labels[locale]?[key] ?? labels['en']![key];
 }
