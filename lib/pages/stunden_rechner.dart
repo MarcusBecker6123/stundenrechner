@@ -33,12 +33,12 @@ class _StundenRechnerState extends State<StundenRechner> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),
-            label: (AppLocalizations.of(context)!.navbar1 ?? 'Calculator'),
+            label: (AppLocalizations.of(context)?.navbar1 ?? 'Calculator'),
             backgroundColor: Color.fromARGB(199, 65, 119, 200),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: (AppLocalizations.of(context)!.navbar2 ?? 'Work Times'),
+            label: (AppLocalizations.of(context)?.navbar2 ?? 'Work Times'),
             // <-- This label will be localized
             backgroundColor: Color.fromARGB(199, 65, 119, 200),
           ),
@@ -91,7 +91,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
         backgroundColor: const Color.fromARGB(199, 65, 119, 200),
         title: Center(
           child: Text(
-            AppLocalizations.of(context)!.calculator,
+            AppLocalizations.of(context)?.calculator ?? 'Calculator',
             style: TextStyle(
               color: Colors.white,
               fontSize: 32,
@@ -111,8 +111,8 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 children: [
                   Text(
                     _selectedDate == null
-                        ? '${AppLocalizations.of(context)!.noDate}'
-                        : '${AppLocalizations.of(context)!.date}: ${_selectedDate!.day}.${_selectedDate!.month}.${_selectedDate!.year}',
+                        ? '${AppLocalizations.of(context)?.noDate ?? 'No date selected'}'
+                        : '${AppLocalizations.of(context)?.date ?? 'Date'}: ${_selectedDate!.day}.${_selectedDate!.month}.${_selectedDate!.year}',
                   ),
                   const SizedBox(width: 24),
                   ElevatedButton(
@@ -133,7 +133,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                       }
                     },
                     child: Text(
-                      AppLocalizations.of(context)!.chooseDate,
+                      AppLocalizations.of(context)?.chooseDate ?? 'Choose date',
                       style: TextStyle(
                         color: Color.fromARGB(199, 65, 119, 200),
                       ),
@@ -148,11 +148,11 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 title: Row(
                   children: [
                     Text(
-                      '${AppLocalizations.of(context)!.begin}: ${_formatTime(_startTime)}',
+                      '${AppLocalizations.of(context)?.begin ?? 'Begin'}: ${_formatTime(_startTime)}',
                     ),
                     const SizedBox(width: 24),
                     Text(
-                      '${AppLocalizations.of(context)!.end}: ${_formatTime(_endTime)}',
+                      '${AppLocalizations.of(context)?.end ?? 'End'}: ${_formatTime(_endTime)}',
                     ),
                   ],
                 ),
@@ -206,11 +206,11 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                 title: Row(
                   children: [
                     Text(
-                      '${AppLocalizations.of(context)!.begin}: ${_formatTime(_breakStartTime)}',
+                      '${AppLocalizations.of(context)?.begin ?? 'Begin'}: ${_formatTime(_breakStartTime)}',
                     ),
                     const SizedBox(width: 24),
                     Text(
-                      '${AppLocalizations.of(context)!.end}: ${_formatTime(_breakEndTime)}',
+                      '${AppLocalizations.of(context)?.end ?? 'End'}: ${_formatTime(_breakEndTime)}',
                     ),
                   ],
                 ),
@@ -259,7 +259,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
               if (Platform.isAndroid)
                 Row(
                   children: [
-                    Text(AppLocalizations.of(context)!.format24Hour),
+                    Text(AppLocalizations.of(context)?.format24Hour ?? '24-hour format'),
                     Switch(
                       value: _use24HourFormat,
                       onChanged: (val) {
@@ -277,8 +277,8 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(AppLocalizations.of(context)!.chooseDate),
+                        title: Text(AppLocalizations.of(context)?.alert ?? 'Alert'),
+                        content: Text(AppLocalizations.of(context)?.chooseDate ?? 'Choose date'),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),
@@ -309,8 +309,8 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: Text(AppLocalizations.of(context)!.error),
-                        content: Text(AppLocalizations.of(context)!.eHandler),
+                        title: Text(AppLocalizations.of(context)?.error ?? 'Error'),
+                        content: Text(AppLocalizations.of(context)?.eHandler ?? 'Invalid time difference'),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),
@@ -333,11 +333,11 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     differenz,
                   );
                   print(
-                    '${AppLocalizations.of(context)!.hourdiff}: $differenz',
+                    '${AppLocalizations.of(context)?.hourdiff ?? 'Hour difference'}: $differenz',
                   );
                 },
                 child: Text(
-                  AppLocalizations.of(context)!.insert,
+                  AppLocalizations.of(context)?.insert ?? 'Insert',
                   style: TextStyle(color: Color.fromARGB(199, 65, 119, 200)),
                 ),
               ),
