@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:stundenrechner/l10n/app_localizations_de.dart';
 import '../l10n/app_localizations.dart';
 import 'package:stundenrechner/pages/arbeitszeiten_page.dart';
 import 'database_helper.dart';
@@ -34,12 +33,12 @@ class _StundenRechnerState extends State<StundenRechner> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),
-            label: AppLocalizations.of(context)!.navbar1,
+            label: (AppLocalizations.of(context)!.navbar1 ?? 'Calculator'),
             backgroundColor: Color.fromARGB(199, 65, 119, 200),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: AppLocalizations.of(context)!.navbar2,
+            label: (AppLocalizations.of(context)!.navbar2 ?? 'Work Times'),
             // <-- This label will be localized
             backgroundColor: Color.fromARGB(199, 65, 119, 200),
           ),
