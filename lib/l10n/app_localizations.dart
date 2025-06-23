@@ -7,6 +7,7 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
+import 'app_localizations_hi.dart'; // Import other language files as needed
 
 // ignore_for_file: type=lint
 

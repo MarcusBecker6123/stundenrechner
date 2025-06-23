@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:stundenrechner/l10n/app_localizations.dart';
 import 'package:stundenrechner/pages/stunden_rechner.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('en'), // English
         Locale('de'), // German
+        Locale('hi'), // Hindi
         // Add more locales as needed
       ],
       home: StundenRechner(),
