@@ -105,7 +105,7 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                         children: [
                           Text('${entry['date']}'),
                           Text(
-                            '${(entry['working_time'] ?? 0.0).toStringAsFixed(2)} Stunden',
+                            '${(entry['working_time'] ?? 0.0).toStringAsFixed(2)} ${AppLocalizations.of(context)?.hours ?? 'Hours'}',
                             style: TextStyle(color: Colors.grey[700]),
                           ),
                         ],

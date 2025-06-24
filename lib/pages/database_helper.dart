@@ -37,7 +37,7 @@ class DatabaseHelper {
     String date,
     double start,
     double end,
-    double breakTime,      // NEW PARAMETER
+    double breakTime, // NEW PARAMETER
     double workingTime,
   ) async {
     final db = await instance.database;
@@ -45,7 +45,7 @@ class DatabaseHelper {
       'date': date,
       'start_time': start,
       'end_time': end,
-      'break_time': breakTime,   // NEW FIELD
+      'break_time': breakTime, // NEW FIELD
       'working_time': workingTime,
     });
   }
@@ -67,10 +67,52 @@ class DatabaseHelper {
 
   Future<void> deleteWorkTime(int id) async {
     final db = await database;
-    await db.delete(
+    await db.delete('work_times', where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<double> getNettoArbeitszeitByDate(String date) async {
+    final db = await instance.database;
+    final entries = await db.query(
       'work_times',
-      where: 'id = ?',
-      whereArgs: [id],
+      where: 'date = ?',
+      whereArgs: [date],
     );
+
+    // Zeitblöcke als Liste von (start, end)
+    List<Map<String, double>> blocks = entries.map((entry) {
+      return {
+        'start': entry['start_time'] as double,
+        'end': entry['end_time'] as double,
+      };
+    }).toList();
+
+    // Sortieren nach Startzeit
+    blocks.sort((a, b) => a['start']!.compareTo(b['start']!));
+
+    // Zusammenführen überlappender Blöcke
+    List<Map<String, double>> merged = [];
+    for (var block in blocks) {
+      if (merged.isEmpty) {
+        merged.add(block);
+      } else {
+        var last = merged.last;
+        if (block['start']! <= last['end']!) {
+          // Wenn sich die Blöcke überschneiden oder aneinanderstoßen
+          if (block['end']! > last['end']!) {
+            last['end'] = block['end']!;
+          }
+        } else {
+          merged.add(block);
+        }
+      }
+    }
+
+    // Netto-Zeit berechnen
+    double nettoZeit = 0.0;
+    for (var block in merged) {
+      nettoZeit += block['end']! - block['start']!;
+    }
+
+    return nettoZeit;
   }
 }

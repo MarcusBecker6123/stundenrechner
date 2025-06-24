@@ -1,0 +1,11 @@
+{
+  "hi": [
+    "startTime",
+    "endTime"
+  ],
+
+  "ru": [
+    "startTime",
+    "endTime"
+  ]
+}
