@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stundenrechner/l10n/app_localizations.dart';
-import 'package:stundenrechner/l10n/app_localizations_de.dart';
-import 'database_helper.dart';
+import 'package:stundenrechner/pages/database_helper.dart';
 import 'arbeitszeit_detail_page.dart';
 
 class ArbeitszeitenPage extends StatefulWidget {

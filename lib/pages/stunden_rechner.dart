@@ -71,8 +71,7 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
   TimeOfDay? _breakEndTime; // NEW
   bool _use24HourFormat = true; // NEW
 
-  // NEW: Last difference value
-  double? _lastDifferenz;
+
 
   // Helper to format TimeOfDay
   String _formatTime(TimeOfDay? time) {
