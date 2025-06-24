@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'database_helper.dart';
 
+
 class ArbeitszeitDetailPage extends StatefulWidget {
   final Map<String, dynamic> entry;
   final Function(Map<String, dynamic>)? onSave;

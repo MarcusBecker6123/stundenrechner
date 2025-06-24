@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stundenrechner/l10n/app_localizations.dart';
+import 'package:stundenrechner/l10n/app_localizations_de.dart';
 import 'database_helper.dart';
 import 'arbeitszeit_detail_page.dart';
 
@@ -132,22 +134,38 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                               final confirm = await showDialog<bool>(
                                 context: context,
                                 builder: (context) => AlertDialog(
-                                  title: Text('Löschen bestätigen'),
-                                  content: Text('Möchtest du diese Zeile wirklich löschen?'),
+                                  title: Text(
+                                    AppLocalizations.of(context)?.confirm ??
+                                        'Confirm Deletion',
+                                  ),
+                                  content: Text(
+                                    AppLocalizations.of(context)?.question ??
+                                        'Möchtest du diese Zeile wirklich löschen?',
+                                  ),
                                   actions: [
                                     TextButton(
-                                      child: Text('Abbrechen'),
-                                      onPressed: () => Navigator.of(context).pop(false),
+                                      child: Text(
+                                        AppLocalizations.of(context)?.cancel ??
+                                            'Abbrechen',
+                                      ),
+                                      onPressed: () =>
+                                          Navigator.of(context).pop(false),
                                     ),
                                     TextButton(
-                                      child: Text('Löschen'),
-                                      onPressed: () => Navigator.of(context).pop(true),
+                                      child: Text(
+                                        AppLocalizations.of(context)?.delete ??
+                                            'Löschen',
+                                      ),
+                                      onPressed: () =>
+                                          Navigator.of(context).pop(true),
                                     ),
                                   ],
                                 ),
                               );
                               if (confirm == true) {
-                                await DatabaseHelper.instance.deleteWorkTime(entry['id']);
+                                await DatabaseHelper.instance.deleteWorkTime(
+                                  entry['id'],
+                                );
                                 setState(() {});
                               }
                             },
@@ -164,7 +182,9 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Summe für $selectedMonth: ',
+                        text:
+                            AppLocalizations.of(context)?.sumFor ??
+                            'Summe für' + ' $selectedMonth:',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -180,7 +200,8 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                         ),
                       ),
                       TextSpan(
-                        text: ' Stunden',
+                        text:
+                            ' ${AppLocalizations.of(context)?.hours ?? 'Hours'}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
