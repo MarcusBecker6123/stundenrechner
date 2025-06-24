@@ -131,4 +131,8 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get endTime => 'Endzeit (z.B. 17.0 für 17:00)';
+
+  @override
+  String get overlapWarning =>
+      'Dieser Zeitraum überschneidet sich mit einem bestehenden Eintrag. Bitte bearbeiten Sie den vorhandenen Eintrag oder wählen Sie eine andere Zeit.';
 }

@@ -1,11 +1,21 @@
 {
+  "es": [
+    "overlapWarning"
+  ],
+
   "hi": [
     "startTime",
-    "endTime"
+    "endTime",
+    "overlapWarning"
+  ],
+
+  "it": [
+    "overlapWarning"
   ],
 
   "ru": [
     "startTime",
-    "endTime"
+    "endTime",
+    "overlapWarning"
   ]
 }

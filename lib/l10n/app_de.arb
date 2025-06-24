@@ -40,5 +40,6 @@
   "save": "Speichern",
   "cancel": "Abbrechen",
   "startTime": "Startzeit (z.B. 8.5 für 08:30)",
-  "endTime": "Endzeit (z.B. 17.0 für 17:00)"
+  "endTime": "Endzeit (z.B. 17.0 für 17:00)",
+  "overlapWarning": "Dieser Zeitraum überschneidet sich mit einem bestehenden Eintrag. Bitte bearbeiten Sie den vorhandenen Eintrag oder wählen Sie eine andere Zeit."
 }

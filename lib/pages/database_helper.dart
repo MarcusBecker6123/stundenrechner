@@ -78,41 +78,31 @@ class DatabaseHelper {
       whereArgs: [date],
     );
 
-    // Zeitblöcke als Liste von (start, end)
-    List<Map<String, double>> blocks = entries.map((entry) {
-      return {
-        'start': entry['start_time'] as double,
-        'end': entry['end_time'] as double,
-      };
-    }).toList();
+    double nettoZeit = 0.0;
+    for (var entry in entries) {
+      final start = entry['start_time'] as double;
+      final end = entry['end_time'] as double;
+      nettoZeit += end - start;
+    }
+    return nettoZeit;
+  }
 
-    // Sortieren nach Startzeit
-    blocks.sort((a, b) => a['start']!.compareTo(b['start']!));
+  Future<bool> isOverlapping(String date, double newStart, double newEnd) async {
+    final db = await instance.database;
+    final entries = await db.query(
+      'work_times',
+      where: 'date = ?',
+      whereArgs: [date],
+    );
 
-    // Zusammenführen überlappender Blöcke
-    List<Map<String, double>> merged = [];
-    for (var block in blocks) {
-      if (merged.isEmpty) {
-        merged.add(block);
-      } else {
-        var last = merged.last;
-        if (block['start']! <= last['end']!) {
-          // Wenn sich die Blöcke überschneiden oder aneinanderstoßen
-          if (block['end']! > last['end']!) {
-            last['end'] = block['end']!;
-          }
-        } else {
-          merged.add(block);
-        }
+    for (var entry in entries) {
+      final existingStart = entry['start_time'] as double;
+      final existingEnd = entry['end_time'] as double;
+
+      if (newStart < existingEnd && newEnd > existingStart) {
+        return true;
       }
     }
-
-    // Netto-Zeit berechnen
-    double nettoZeit = 0.0;
-    for (var block in merged) {
-      nettoZeit += block['end']! - block['start']!;
-    }
-
-    return nettoZeit;
+    return false;
   }
 }

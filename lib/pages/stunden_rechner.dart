@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:stundenrechner/pages/database_helper.dart';
 import '../l10n/app_localizations.dart';
 import 'package:stundenrechner/pages/arbeitszeiten_page.dart';
-import 'database_helper.dart';
+
 
 class StundenRechner extends StatefulWidget {
   const StundenRechner({super.key});
@@ -293,6 +294,28 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                   final start = _timeOfDayToDouble(_startTime!);
                   final end = _timeOfDayToDouble(_endTime!);
 
+                  final dateString =
+                      '${_selectedDate!.day.toString().padLeft(2, '0')}.${_selectedDate!.month.toString().padLeft(2, '0')}.${_selectedDate!.year}';
+
+                    final isConflict = await DatabaseHelper.instance.isOverlapping(dateString, start, end);
+                  if (isConflict) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text(AppLocalizations.of(context)?.alert ?? 'Achtung'),
+                        content: Text(AppLocalizations.of(context)?.overlapWarning ??
+                            'This time overlaps with an existing entry. Please edit the existing entry or choose another time.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
+                    return;
+                  }
+
                   double breakDuration = 0.0;
                   if (_breakStartTime != null && _breakEndTime != null) {
                     breakDuration =
@@ -321,18 +344,12 @@ class _StundenRechnerFormState extends State<StundenRechnerForm> {
                     return;
                   }
 
-                  final dateString =
-                      '${_selectedDate!.day.toString().padLeft(2, '0')}.${_selectedDate!.month.toString().padLeft(2, '0')}.${_selectedDate!.year}';
-
                   await DatabaseHelper.instance.insertWorkTime(
                     dateString,
                     start,
                     end,
                     breakDuration,
                     differenz,
-                  );
-                  print(
-                    '${AppLocalizations.of(context)?.hourdiff ?? 'Hour difference'}: $differenz',
                   );
                 },
                 child: Text(

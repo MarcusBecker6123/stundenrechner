@@ -131,4 +131,8 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get endTime => 'Ora di fine (ad es. 17.0 per 17:00)';
+
+  @override
+  String get overlapWarning =>
+      'This time overlaps with an existing entry. Please edit the existing entry or choose another time.';
 }

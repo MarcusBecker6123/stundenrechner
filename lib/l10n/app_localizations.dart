@@ -351,6 +351,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'End time (e.g. 17.0 for 17:00)'**
   String get endTime;
+
+  /// No description provided for @overlapWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This time overlaps with an existing entry. Please edit the existing entry or choose another time.'**
+  String get overlapWarning;
 }
 
 class _AppLocalizationsDelegate
