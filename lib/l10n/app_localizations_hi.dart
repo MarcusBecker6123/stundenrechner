@@ -63,7 +63,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get error => 'त्रुटि';
 
   @override
-  String get eHandler => 'प्रारंभ अंत से पहले होना चाहिए और ब्रेक समय नकारात्मक नहीं हो सकता।';
+  String get eHandler =>
+      'प्रारंभ अंत से पहले होना चाहिए और ब्रेक समय नकारात्मक नहीं हो सकता।';
 
   @override
   String get hourdiff => 'घंटों का अंतर';
@@ -124,4 +125,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get cancel => 'रद्द करें';
+
+  @override
+  String get startTime => 'Start time (e.g. 8.5 for 08:30)';
+
+  @override
+  String get endTime => 'End time (e.g. 17.0 for 17:00)';
 }

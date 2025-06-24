@@ -38,5 +38,7 @@
   "fur": "for",
   "breakTime": "Break (e.g., 0.5 for 30 minutes)",
   "save": "Save",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "startTime": "Start time (e.g. 8.5 for 08:30)",
+  "endTime": "End time (e.g. 17.0 for 17:00)"
 }

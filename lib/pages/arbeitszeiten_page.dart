@@ -19,7 +19,7 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
         backgroundColor: const Color.fromARGB(199, 65, 119, 200),
         title: Center(
           child: Text(
-            'Arbeitszeiten',
+            AppLocalizations.of(context)?.appTitle ?? 'Working hours',
             style: TextStyle(
               color: Colors.white,
               fontSize: 32,
@@ -140,13 +140,13 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                                   ),
                                   content: Text(
                                     AppLocalizations.of(context)?.question ??
-                                        'Möchtest du diese Zeile wirklich löschen?',
+                                        'Are you sure you want to delete this entry?',
                                   ),
                                   actions: [
                                     TextButton(
                                       child: Text(
                                         AppLocalizations.of(context)?.cancel ??
-                                            'Abbrechen',
+                                            'Cancel',
                                       ),
                                       onPressed: () =>
                                           Navigator.of(context).pop(false),
@@ -154,7 +154,7 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                                     TextButton(
                                       child: Text(
                                         AppLocalizations.of(context)?.delete ??
-                                            'Löschen',
+                                            'Delete',
                                       ),
                                       onPressed: () =>
                                           Navigator.of(context).pop(true),
@@ -184,7 +184,7 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                       TextSpan(
                         text:
                             AppLocalizations.of(context)?.sumFor ??
-                            'Summe für' + ' $selectedMonth:',
+                            'Sum for' + ' $selectedMonth:',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,

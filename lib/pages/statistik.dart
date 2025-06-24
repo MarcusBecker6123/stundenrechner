@@ -10,11 +10,15 @@ class StatistikPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:  Text(AppLocalizations.of(context)!.monthlyHours)),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.monthlyHours)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: monthlyHours.isEmpty
-            ? const Center(child: Text('Keine Daten vorhanden.'))
+            ? Center(
+                child: Text(
+                  AppLocalizations.of(context)?.noData ?? 'No Data Available',
+                ),
+              )
             : BarChart(
                 BarChartData(
                   alignment: BarChartAlignment.spaceAround,

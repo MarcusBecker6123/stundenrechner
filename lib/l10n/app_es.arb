@@ -38,5 +38,7 @@
   "fur": "para",
   "breakTime": "Pausa (por ejemplo, 0,5 durante 30 minutos)",
   "save": "Guardar",
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "startTime": "Hora de inicio (por ejemplo, 8,5 para las 08:30)",
+  "endTime": "Hora de finalización (por ejemplo, 17.0 para las 17:00)"
 }

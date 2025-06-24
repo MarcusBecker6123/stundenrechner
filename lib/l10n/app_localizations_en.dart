@@ -63,7 +63,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error => 'Error';
 
   @override
-  String get eHandler => 'Start must be before end and break time cannot be negative.';
+  String get eHandler =>
+      'Start must be before end and break time cannot be negative.';
 
   @override
   String get hourdiff => 'Hour Difference';
@@ -124,4 +125,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cancel => 'Cancel';
+
+  @override
+  String get startTime => 'Start time (e.g. 8.5 for 08:30)';
+
+  @override
+  String get endTime => 'End time (e.g. 17.0 for 17:00)';
 }

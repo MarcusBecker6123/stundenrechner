@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stundenrechner/l10n/app_localizations.dart';
 import 'database_helper.dart';
 
 
@@ -43,7 +44,7 @@ class _ArbeitszeitDetailPageState extends State<ArbeitszeitDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Details für ${widget.entry['date']}')),
+      appBar: AppBar(title: Text('${AppLocalizations.of(context)?.details ?? 'Details for'} ${widget.entry['date']}')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -51,21 +52,21 @@ class _ArbeitszeitDetailPageState extends State<ArbeitszeitDetailPage> {
             TextField(
               controller: startController,
               decoration: InputDecoration(
-                labelText: 'Startzeit (z.B. 8.5 für 08:30)',
+                labelText: AppLocalizations.of(context)?.startTime ?? 'Startzeit (z.B. 8.5 für 8:30)',
               ),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: endController,
               decoration: InputDecoration(
-                labelText: 'Endzeit (z.B. 17.0 für 17:00)',
+                labelText: AppLocalizations.of(context)?.endTime ?? 'Endzeit (z.B. 17.5 für 17:30)',
               ),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: breakController,
               decoration: InputDecoration(
-                labelText: 'Pause in Stunden (z.B. 0.5 für 30min)',
+                labelText: AppLocalizations.of(context)?.breakTime ?? 'Break (e.g., 0.5 for 30 minutes)',
               ),
               keyboardType: TextInputType.number,
             ),
@@ -88,7 +89,7 @@ class _ArbeitszeitDetailPageState extends State<ArbeitszeitDetailPage> {
 
                 Navigator.pop(context, updatedEntry);
               },
-              child: const Text('Speichern'),
+              child:  Text(AppLocalizations.of(context)?.save ?? 'Save'),
             ),
           ],
         ),
