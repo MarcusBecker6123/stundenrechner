@@ -1,5 +1,4 @@
 {
-  "//": "This is the source ARB file. Use this to generate translated ARB files using a translation script with GUI and API support.",
   "@@locale": "en",
   "appTitle": "Working Hours",
   "greeting": "Hello!",

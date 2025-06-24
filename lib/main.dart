@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         Locale('en'), // English
         Locale('de'), // German
         Locale('hi'), // Hindi
+        Locale('es'), // Spanish
         // Add more locales as needed
       ],
       home: StundenRechner(),

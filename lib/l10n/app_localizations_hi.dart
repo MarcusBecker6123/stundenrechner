@@ -23,69 +23,105 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get edit => 'संपादित करें';
 
+  @override
   String get hours => 'घंटे';
 
+  @override
   String get confirm => 'हटाने की पुष्टि करें';
 
+  @override
   String get navbar1 => 'कैलकुलेटर';
 
+  @override
   String get navbar2 => 'कार्य समय';
 
+  @override
   String get calculator => 'घंटा कैलकुलेटर';
 
+  @override
   String get noDate => 'कोई तिथि चयनित नहीं';
 
+  @override
   String get date => 'तिथि';
 
+  @override
   String get chooseDate => 'तिथि चुनें';
 
+  @override
   String get begin => 'प्रारंभ';
 
+  @override
   String get end => 'समाप्त';
 
+  @override
   String get format24Hour => '24-घंटे प्रारूप';
 
+  @override
   String get alert => 'सूचना';
 
+  @override
   String get error => 'त्रुटि';
 
-  String get eHandler =>
-      'प्रारंभ अंत से पहले होना चाहिए और ब्रेक समय नकारात्मक नहीं हो सकता।';
+  @override
+  String get eHandler => 'प्रारंभ अंत से पहले होना चाहिए और ब्रेक समय नकारात्मक नहीं हो सकता।';
 
+  @override
   String get hourdiff => 'घंटों का अंतर';
 
+  @override
   String get insert => 'जोड़ें';
 
+  @override
   String get cconfirm => 'पुष्टि करें';
 
+  @override
   String get question => 'क्या आप वाकई इस प्रविष्टि को हटाना चाहते हैं?';
 
+  @override
   String get noData => 'निर्यात करने के लिए कोई डेटा नहीं।';
 
+  @override
   String get exportAll => 'kaaryasamay_niryaat_sabhi';
 
+  @override
   String get exportSelected => 'kaaryasamay_niryaat_';
 
+  @override
   String get noSupported => 'प्लेटफ़ॉर्म समर्थित नहीं है।';
 
+  @override
   String get exportError => 'डेटा निर्यात करने में त्रुटि।';
 
+  @override
   String get chooseExport => 'आप क्या निर्यात करना चाहते हैं?';
 
+  @override
   String get month => 'केवल चयनित माह';
-  String get all => 'सभी डेटा';
+
+  @override
   String get year => 'पूरा वर्ष';
+
+  @override
+  String get all => 'सभी डेटा';
+
+  @override
   String get sumFor => 'के लिए योग';
+
+  @override
   String get monthlyHours => 'मासिक घंटे';
 
+  @override
   String get details => 'विवरण';
 
+  @override
   String get fur => 'के लिए';
 
-
+  @override
   String get breakTime => 'ब्रेक समय';
 
+  @override
   String get save => 'सहेजें';
 
+  @override
   String get cancel => 'रद्द करें';
 }
