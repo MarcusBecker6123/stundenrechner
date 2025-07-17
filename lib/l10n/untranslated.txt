@@ -1,21 +1,37 @@
 {
   "es": [
-    "overlapWarning"
+    "overlapWarning",
+    "exportSuccess",
+    "exportCurrentMonth",
+    "exportSelectedMonth",
+    "exportCurrentYear"
   ],
 
   "hi": [
     "startTime",
     "endTime",
-    "overlapWarning"
+    "overlapWarning",
+    "exportSuccess",
+    "exportCurrentMonth",
+    "exportSelectedMonth",
+    "exportCurrentYear"
   ],
 
   "it": [
-    "overlapWarning"
+    "overlapWarning",
+    "exportSuccess",
+    "exportCurrentMonth",
+    "exportSelectedMonth",
+    "exportCurrentYear"
   ],
 
   "ru": [
     "startTime",
     "endTime",
-    "overlapWarning"
+    "overlapWarning",
+    "exportSuccess",
+    "exportCurrentMonth",
+    "exportSelectedMonth",
+    "exportCurrentYear"
   ]
 }

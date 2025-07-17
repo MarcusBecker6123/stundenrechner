@@ -127,12 +127,24 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cancel => 'Отмена';
 
   @override
-  String get startTime => 'Start time (e.g. 8.5 for 08:30)';
+  String get startTime => 'Startzeit (z.B. 8.5 für 08:30)';
 
   @override
-  String get endTime => 'End time (e.g. 17.0 for 17:00)';
+  String get endTime => 'Endzeit (z.B. 17.0 für 17:00)';
 
   @override
   String get overlapWarning =>
-      'This time overlaps with an existing entry. Please edit the existing entry or choose another time.';
+      'Dieser Zeitraum überschneidet sich mit einem bestehenden Eintrag. Bitte bearbeiten Sie den vorhandenen Eintrag oder wählen Sie eine andere Zeit.';
+
+  @override
+  String get exportSuccess => 'Exportieren erfolgreich.';
+
+  @override
+  String get exportCurrentMonth => 'Dieser Monat';
+
+  @override
+  String get exportSelectedMonth => 'Ausgewählter Monat';
+
+  @override
+  String get exportCurrentYear => 'Dieses Jahr';
 }

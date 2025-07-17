@@ -24,7 +24,7 @@
   "cconfirm": "Confirm",
   "question": "Are you sure you want to delete this entry?",
   "noData": "No data available",
-  "exportAll": "all_working_hours_export",
+  "exportAll": "all",
   "exportSelected": "hours_export_",
   "noSupported": "Platform not supported.",
   "exportError": "Export failed",
@@ -41,5 +41,9 @@
   "cancel": "Cancel",
   "startTime": "Start time (e.g. 8.5 for 08:30)",
   "endTime": "End time (e.g. 17.0 for 17:00)",
-  "overlapWarning": "This time overlaps with an existing entry. Please edit the existing entry or choose another time."
+  "overlapWarning": "This time overlaps with an existing entry. Please edit the existing entry or choose another time.",
+  "exportSuccess": "Exported successfully.",
+  "exportCurrentMonth": "Current month",
+  "exportSelectedMonth": "Selected month",
+  "exportCurrentYear": "This year"
 }

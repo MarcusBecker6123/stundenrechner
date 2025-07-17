@@ -135,5 +135,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get overlapWarning =>
-      'This time overlaps with an existing entry. Please edit the existing entry or choose another time.';
+      'Dieser Zeitraum überschneidet sich mit einem bestehenden Eintrag. Bitte bearbeiten Sie den vorhandenen Eintrag oder wählen Sie eine andere Zeit.';
+
+  @override
+  String get exportSuccess => 'Exportieren erfolgreich.';
+
+  @override
+  String get exportCurrentMonth => 'Dieser Monat';
+
+  @override
+  String get exportSelectedMonth => 'Ausgewählter Monat';
+
+  @override
+  String get exportCurrentYear => 'Dieses Jahr';
 }

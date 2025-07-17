@@ -82,7 +82,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noData => 'No data available';
 
   @override
-  String get exportAll => 'all_working_hours_export';
+  String get exportAll => 'all';
 
   @override
   String get exportSelected => 'hours_export_';
@@ -135,4 +135,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get overlapWarning =>
       'This time overlaps with an existing entry. Please edit the existing entry or choose another time.';
+
+  @override
+  String get exportSuccess => 'Exported successfully.';
+
+  @override
+  String get exportCurrentMonth => 'Current month';
+
+  @override
+  String get exportSelectedMonth => 'Selected month';
+
+  @override
+  String get exportCurrentYear => 'This year';
 }

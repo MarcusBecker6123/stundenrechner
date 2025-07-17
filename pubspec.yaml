@@ -36,11 +36,13 @@ dependencies:
   cupertino_icons: ^1.0.8
   sqflite: ^2.3.3
   path: ^1.9.0
+  path_provider: ^2.1.5
   flutter_localizations:
     sdk: flutter
   intl: any
   fl_chart: ^1.0.0
   flutter_gen: ^5.10.0
+  share_plus: ^11.0.0
 
 dev_dependencies:
   flutter_test:

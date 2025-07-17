@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:stundenrechner/l10n/app_localizations.dart';
 import 'package:stundenrechner/pages/database_helper.dart';
 import 'arbeitszeit_detail_page.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ArbeitszeitenPage extends StatefulWidget {
   @override
@@ -93,6 +96,48 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
                     },
                   ),
                 ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    PopupMenuButton<String>(
+                      onSelected: (scope) => _exportData(scope, data),
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          value: 'currentMonth',
+                          child: Text(
+                            AppLocalizations.of(context)?.exportCurrentMonth ??
+                                'Export Current Month',
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 'selectedMonth',
+                          child: Text(
+                            AppLocalizations.of(context)?.exportSelectedMonth ??
+                                'Export Selected Month',
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 'currentYear',
+                          child: Text(
+                            AppLocalizations.of(context)?.exportCurrentYear ??
+                                'Export Current Year',
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: 'all',
+                          child: Text(
+                            AppLocalizations.of(context)?.exportAll ??
+                                'Export All',
+                          ),
+                        ),
+                      ],
+                      icon: Icon(Icons.download),
+                    ),
+                  ],
+                ),
+              ),
               Expanded(
                 child: ListView.builder(
                   itemCount: filtered.length,
@@ -226,5 +271,59 @@ class _ArbeitszeitenPageState extends State<ArbeitszeitenPage> {
       int.parse(parts[1]),
       int.parse(parts[0]),
     );
+  }
+
+  Future<void> _exportData(
+    String scope,
+    List<Map<String, dynamic>> data,
+  ) async {
+    List<Map<String, dynamic>> filteredData;
+
+    final now = DateTime.now();
+    final currentMonth = now.month.toString().padLeft(2, '0');
+    final currentYear = now.year.toString();
+
+    switch (scope) {
+      case 'currentMonth':
+        filteredData = data.where((entry) {
+          final parts = entry['date'].toString().split('.');
+          return parts[1] == currentMonth && parts[2] == currentYear;
+        }).toList();
+        break;
+      case 'selectedMonth':
+        if (selectedMonth == null) return;
+        final selectedParts = selectedMonth!.split('.');
+        filteredData = data.where((entry) {
+          final parts = entry['date'].toString().split('.');
+          return parts[1] == selectedParts[0] && parts[2] == selectedParts[1];
+        }).toList();
+        break;
+      case 'currentYear':
+        filteredData = data.where((entry) {
+          final parts = entry['date'].toString().split('.');
+          return parts[2] == currentYear;
+        }).toList();
+        break;
+      case 'all':
+      default:
+        filteredData = data;
+    }
+
+    final csvBuffer = StringBuffer();
+    csvBuffer.writeln('Date,Working Time');
+
+    for (final entry in filteredData) {
+      final date = entry['date'];
+      final time = entry['working_time']?.toStringAsFixed(2) ?? '0.00';
+      csvBuffer.writeln('$date,$time');
+    }
+
+    final dir = await getApplicationDocumentsDirectory();
+    final timestamp = DateTime.now().toIso8601String().split('T').first;
+    final fileName = 'arbeitszeiten_${scope}_$timestamp.csv';
+    final file = File('${dir.path}/$fileName');
+    await file.writeAsString(csvBuffer.toString());
+
+    await Share.shareXFiles([XFile(file.path)]);
   }
 }

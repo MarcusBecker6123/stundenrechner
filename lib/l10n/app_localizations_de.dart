@@ -82,7 +82,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get noData => 'Keine Daten verfügbar';
 
   @override
-  String get exportAll => 'alle_arbeitszeiten_export';
+  String get exportAll => 'Alles';
 
   @override
   String get exportSelected => 'arbeitszeit_export_';
@@ -135,4 +135,16 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get overlapWarning =>
       'Dieser Zeitraum überschneidet sich mit einem bestehenden Eintrag. Bitte bearbeiten Sie den vorhandenen Eintrag oder wählen Sie eine andere Zeit.';
+
+  @override
+  String get exportSuccess => 'Exportieren erfolgreich.';
+
+  @override
+  String get exportCurrentMonth => 'Dieser Monat';
+
+  @override
+  String get exportSelectedMonth => 'Ausgewählter Monat';
+
+  @override
+  String get exportCurrentYear => 'Dieses Jahr';
 }

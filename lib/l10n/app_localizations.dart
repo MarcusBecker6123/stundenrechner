@@ -108,255 +108,279 @@ abstract class AppLocalizations {
 
   /// No description provided for @appTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Working Hours'**
+  /// In de, this message translates to:
+  /// **'Arbeitszeiten'**
   String get appTitle;
 
   /// No description provided for @greeting.
   ///
-  /// In en, this message translates to:
-  /// **'Hello!'**
+  /// In de, this message translates to:
+  /// **'Hallo!'**
   String get greeting;
 
   /// No description provided for @export.
   ///
-  /// In en, this message translates to:
-  /// **'Export'**
+  /// In de, this message translates to:
+  /// **'Exportieren'**
   String get export;
 
   /// No description provided for @delete.
   ///
-  /// In en, this message translates to:
-  /// **'Delete'**
+  /// In de, this message translates to:
+  /// **'Löschen'**
   String get delete;
 
   /// No description provided for @edit.
   ///
-  /// In en, this message translates to:
-  /// **'Edit'**
+  /// In de, this message translates to:
+  /// **'Bearbeiten'**
   String get edit;
 
   /// No description provided for @hours.
   ///
-  /// In en, this message translates to:
-  /// **'Hours'**
+  /// In de, this message translates to:
+  /// **'Stunden'**
   String get hours;
 
   /// No description provided for @confirm.
   ///
-  /// In en, this message translates to:
-  /// **'Confirm Deletion'**
+  /// In de, this message translates to:
+  /// **'Löschen bestätigen'**
   String get confirm;
 
   /// No description provided for @navbar1.
   ///
-  /// In en, this message translates to:
-  /// **'Calculator'**
+  /// In de, this message translates to:
+  /// **'Rechner'**
   String get navbar1;
 
   /// No description provided for @navbar2.
   ///
-  /// In en, this message translates to:
-  /// **'Working Hours'**
+  /// In de, this message translates to:
+  /// **'Arbeitszeiten'**
   String get navbar2;
 
   /// No description provided for @calculator.
   ///
-  /// In en, this message translates to:
-  /// **'Hours Calculator'**
+  /// In de, this message translates to:
+  /// **'Stundenrechner'**
   String get calculator;
 
   /// No description provided for @noDate.
   ///
-  /// In en, this message translates to:
-  /// **'No date selected'**
+  /// In de, this message translates to:
+  /// **'Kein Datum ausgewählt'**
   String get noDate;
 
   /// No description provided for @date.
   ///
-  /// In en, this message translates to:
-  /// **'Date'**
+  /// In de, this message translates to:
+  /// **'Datum'**
   String get date;
 
   /// No description provided for @chooseDate.
   ///
-  /// In en, this message translates to:
-  /// **'Choose Date'**
+  /// In de, this message translates to:
+  /// **'Datum wählen'**
   String get chooseDate;
 
   /// No description provided for @begin.
   ///
-  /// In en, this message translates to:
+  /// In de, this message translates to:
   /// **'Start'**
   String get begin;
 
   /// No description provided for @end.
   ///
-  /// In en, this message translates to:
-  /// **'End'**
+  /// In de, this message translates to:
+  /// **'Ende'**
   String get end;
 
   /// No description provided for @format24Hour.
   ///
-  /// In en, this message translates to:
-  /// **'24-Hour Format'**
+  /// In de, this message translates to:
+  /// **'24-Stunden-Format'**
   String get format24Hour;
 
   /// No description provided for @alert.
   ///
-  /// In en, this message translates to:
-  /// **'Hint'**
+  /// In de, this message translates to:
+  /// **'Hinweis'**
   String get alert;
 
   /// No description provided for @error.
   ///
-  /// In en, this message translates to:
-  /// **'Error'**
+  /// In de, this message translates to:
+  /// **'Fehler'**
   String get error;
 
   /// No description provided for @eHandler.
   ///
-  /// In en, this message translates to:
-  /// **'Start must be before end and break time cannot be negative.'**
+  /// In de, this message translates to:
+  /// **'Start muss vor Ende liegen und Pausenzeit darf nicht negativ sein.'**
   String get eHandler;
 
   /// No description provided for @hourdiff.
   ///
-  /// In en, this message translates to:
-  /// **'Hour Difference'**
+  /// In de, this message translates to:
+  /// **'Stundendifferenz'**
   String get hourdiff;
 
   /// No description provided for @insert.
   ///
-  /// In en, this message translates to:
-  /// **'Enter'**
+  /// In de, this message translates to:
+  /// **'Eintragen'**
   String get insert;
 
   /// No description provided for @cconfirm.
   ///
-  /// In en, this message translates to:
-  /// **'Confirm'**
+  /// In de, this message translates to:
+  /// **'Bestätigen'**
   String get cconfirm;
 
   /// No description provided for @question.
   ///
-  /// In en, this message translates to:
-  /// **'Are you sure you want to delete this entry?'**
+  /// In de, this message translates to:
+  /// **'Möchtest du diesen Eintrag wirklich löschen?'**
   String get question;
 
   /// No description provided for @noData.
   ///
-  /// In en, this message translates to:
-  /// **'No data available'**
+  /// In de, this message translates to:
+  /// **'Keine Daten verfügbar'**
   String get noData;
 
   /// No description provided for @exportAll.
   ///
-  /// In en, this message translates to:
-  /// **'all_working_hours_export'**
+  /// In de, this message translates to:
+  /// **'Alles'**
   String get exportAll;
 
   /// No description provided for @exportSelected.
   ///
-  /// In en, this message translates to:
-  /// **'hours_export_'**
+  /// In de, this message translates to:
+  /// **'arbeitszeit_export_'**
   String get exportSelected;
 
   /// No description provided for @noSupported.
   ///
-  /// In en, this message translates to:
-  /// **'Platform not supported.'**
+  /// In de, this message translates to:
+  /// **'Plattform nicht unterstützt.'**
   String get noSupported;
 
   /// No description provided for @exportError.
   ///
-  /// In en, this message translates to:
-  /// **'Export failed'**
+  /// In de, this message translates to:
+  /// **'Export fehlgeschlagen'**
   String get exportError;
 
   /// No description provided for @chooseExport.
   ///
-  /// In en, this message translates to:
-  /// **'What would you like to export?'**
+  /// In de, this message translates to:
+  /// **'Was möchtest du exportieren?'**
   String get chooseExport;
 
   /// No description provided for @month.
   ///
-  /// In en, this message translates to:
-  /// **'Month'**
+  /// In de, this message translates to:
+  /// **'Monat'**
   String get month;
 
   /// No description provided for @year.
   ///
-  /// In en, this message translates to:
-  /// **'Year'**
+  /// In de, this message translates to:
+  /// **'Jahr'**
   String get year;
 
   /// No description provided for @all.
   ///
-  /// In en, this message translates to:
-  /// **'All Data'**
+  /// In de, this message translates to:
+  /// **'Alle Daten'**
   String get all;
 
   /// No description provided for @sumFor.
   ///
-  /// In en, this message translates to:
-  /// **'Sum for '**
+  /// In de, this message translates to:
+  /// **'Summe für '**
   String get sumFor;
 
   /// No description provided for @monthlyHours.
   ///
-  /// In en, this message translates to:
-  /// **'Monthly Hours'**
+  /// In de, this message translates to:
+  /// **'Monatliche Stunden'**
   String get monthlyHours;
 
   /// No description provided for @details.
   ///
-  /// In en, this message translates to:
-  /// **'Details for '**
+  /// In de, this message translates to:
+  /// **'Details für '**
   String get details;
 
   /// No description provided for @fur.
   ///
-  /// In en, this message translates to:
-  /// **'for'**
+  /// In de, this message translates to:
+  /// **'für'**
   String get fur;
 
   /// No description provided for @breakTime.
   ///
-  /// In en, this message translates to:
-  /// **'Break (e.g., 0.5 for 30 minutes)'**
+  /// In de, this message translates to:
+  /// **'Pause (z. B. 0.5 für 30 Minuten)'**
   String get breakTime;
 
   /// No description provided for @save.
   ///
-  /// In en, this message translates to:
-  /// **'Save'**
+  /// In de, this message translates to:
+  /// **'Speichern'**
   String get save;
 
   /// No description provided for @cancel.
   ///
-  /// In en, this message translates to:
-  /// **'Cancel'**
+  /// In de, this message translates to:
+  /// **'Abbrechen'**
   String get cancel;
 
   /// No description provided for @startTime.
   ///
-  /// In en, this message translates to:
-  /// **'Start time (e.g. 8.5 for 08:30)'**
+  /// In de, this message translates to:
+  /// **'Startzeit (z.B. 8.5 für 08:30)'**
   String get startTime;
 
   /// No description provided for @endTime.
   ///
-  /// In en, this message translates to:
-  /// **'End time (e.g. 17.0 for 17:00)'**
+  /// In de, this message translates to:
+  /// **'Endzeit (z.B. 17.0 für 17:00)'**
   String get endTime;
 
   /// No description provided for @overlapWarning.
   ///
-  /// In en, this message translates to:
-  /// **'This time overlaps with an existing entry. Please edit the existing entry or choose another time.'**
+  /// In de, this message translates to:
+  /// **'Dieser Zeitraum überschneidet sich mit einem bestehenden Eintrag. Bitte bearbeiten Sie den vorhandenen Eintrag oder wählen Sie eine andere Zeit.'**
   String get overlapWarning;
+
+  /// No description provided for @exportSuccess.
+  ///
+  /// In de, this message translates to:
+  /// **'Exportieren erfolgreich.'**
+  String get exportSuccess;
+
+  /// No description provided for @exportCurrentMonth.
+  ///
+  /// In de, this message translates to:
+  /// **'Dieser Monat'**
+  String get exportCurrentMonth;
+
+  /// No description provided for @exportSelectedMonth.
+  ///
+  /// In de, this message translates to:
+  /// **'Ausgewählter Monat'**
+  String get exportSelectedMonth;
+
+  /// No description provided for @exportCurrentYear.
+  ///
+  /// In de, this message translates to:
+  /// **'Dieses Jahr'**
+  String get exportCurrentYear;
 }
 
 class _AppLocalizationsDelegate

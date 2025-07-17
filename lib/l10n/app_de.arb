@@ -24,7 +24,7 @@
   "cconfirm": "Bestätigen",
   "question": "Möchtest du diesen Eintrag wirklich löschen?",
   "noData": "Keine Daten verfügbar",
-  "exportAll": "alle_arbeitszeiten_export",
+  "exportAll": "Alles",
   "exportSelected": "arbeitszeit_export_",
   "noSupported": "Plattform nicht unterstützt.",
   "exportError": "Export fehlgeschlagen",
@@ -41,5 +41,11 @@
   "cancel": "Abbrechen",
   "startTime": "Startzeit (z.B. 8.5 für 08:30)",
   "endTime": "Endzeit (z.B. 17.0 für 17:00)",
-  "overlapWarning": "Dieser Zeitraum überschneidet sich mit einem bestehenden Eintrag. Bitte bearbeiten Sie den vorhandenen Eintrag oder wählen Sie eine andere Zeit."
+  "overlapWarning": "Dieser Zeitraum überschneidet sich mit einem bestehenden Eintrag. Bitte bearbeiten Sie den vorhandenen Eintrag oder wählen Sie eine andere Zeit.",
+  "exportSuccess": "Exportieren erfolgreich.",
+  "exportCurrentMonth": "Dieser Monat",
+  "exportSelectedMonth": "Ausgewählter Monat",
+  "exportCurrentYear": "Dieses Jahr"
+
+
 }
